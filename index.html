@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anas El Hiss — Portfolio BUT GMP SNRV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ─── Reset & Variables ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #10101a;
+    --bg3: #16162a;
+    --border: rgba(255,255,255,.08);
+    --blue: #4f7cff;
+    --violet: #a78bfa;
+    --green: #34d399;
+    --gold: #f59e0b;
+    --text: #e8e8f0;
+    --muted: #8888a0;
+    --card: rgba(255,255,255,.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+
+  /* ─── Progress bar ─── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--violet));
+    width: 0%; z-index: 9999;
+    transition: width .1s linear;
+  }
+
+  /* ─── Nav ─── */
+  nav {
+    position: fixed; top: 3px; left: 0; right: 0;
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(10,10,15,.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 500;
+    transition: color .2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--blue);
+    transition: width .25s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--text); }
+
+  .nav-links a:hover::after,
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; gap: 5px; cursor: pointer;
+  }
+  .nav-hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+  /* ─── Sections ─── */
+  section {
+    padding: 100px 5vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: .75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title span {
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .divider {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--violet));
+    border-radius: 2px;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(79,124,255,.12) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(167,139,250,.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(79,124,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,124,255,.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 760px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .4rem 1rem;
+    background: rgba(79,124,255,.12);
+    border: 1px solid rgba(79,124,255,.3);
+    border-radius: 100px;
+    font-size: .85rem; color: var(--blue);
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .5; transform: scale(1.4); }
+  }
+
+  .hero-name {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: .5rem;
+  }
+
+  .hero-name span {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: .6rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    padding: .35rem .9rem;
+    border-radius: 100px;
+    font-size: .82rem;
+    font-weight: 500;
+    border: 1px solid;
+    transition: transform .2s, box-shadow .2s;
+    cursor: default;
+  }
+
+  .tag:hover { transform: translateY(-2px); }
+
+  .tag-blue  { color: var(--blue);   border-color: rgba(79,124,255,.4);  background: rgba(79,124,255,.08); }
+  .tag-violet{ color: var(--violet); border-color: rgba(167,139,250,.4); background: rgba(167,139,250,.08); }
+  .tag-green { color: var(--green);  border-color: rgba(52,211,153,.4);  background: rgba(52,211,153,.08); }
+  .tag-gold  { color: var(--gold);   border-color: rgba(245,158,11,.4);  background: rgba(245,158,11,.08); }
+
+  .hero-cta {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .75rem 1.75rem;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, opacity .2s;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(79,124,255,.35);
+  }
+
+  .btn-primary:hover { box-shadow: 0 12px 40px rgba(79,124,255,.5); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.04); }
+
+  /* ─── PROFIL ─── */
+  #profil { padding-top: 80px; }
+
+  .profil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .profil-text p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+    transition: border-color .2s, transform .2s;
+  }
+
+  .stat-card:hover { border-color: rgba(79,124,255,.4); transform: translateY(-3px); }
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label { font-size: .82rem; color: var(--muted); margin-top: .25rem; }
+
+  /* ─── COMPÉTENCES ─── */
+  .competences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .comp-card {
+    padding: 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: border-color .25s, transform .25s;
+  }
+
+  .comp-card:hover { border-color: rgba(79,124,255,.35); transform: translateY(-4px); }
+
+  .comp-header {
+    display: flex; align-items: center; gap: .75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .comp-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+  }
+
+  .comp-icon-blue   { background: rgba(79,124,255,.15); }
+  .comp-icon-violet { background: rgba(167,139,250,.15); }
+  .comp-icon-green  { background: rgba(52,211,153,.15); }
+  .comp-icon-gold   { background: rgba(245,158,11,.15); }
+
+  .comp-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; }
+  .comp-ue    { font-size: .8rem; color: var(--muted); }
+
+  .skill-row { margin-bottom: 1rem; }
+
+  .skill-info {
+    display: flex; justify-content: space-between;
+    font-size: .88rem; margin-bottom: .4rem;
+  }
+
+  .skill-bar {
+    height: 6px;
+    background: rgba(255,255,255,.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(.25,.8,.25,1);
+  }
+
+  /* ─── RESSOURCES ─── */
+  .ressources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .semestre-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+
+  .semestre-badge {
+    padding: .2rem .7rem;
+    border-radius: 6px;
+    font-size: .78rem;
+    font-weight: 600;
+  }
+
+  .badge-s1 { background: rgba(79,124,255,.15); color: var(--blue); }
+  .badge-s2 { background: rgba(167,139,250,.15); color: var(--violet); }
+
+  .chips-wrap { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+  .chip {
+    padding: .35rem .85rem;
+    border-radius: 8px;
+    font-size: .82rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color .2s, color .2s, background .2s, transform .15s;
+    user-select: none;
+  }
+
+  .chip:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: rgba(79,124,255,.08);
+    transform: translateY(-1px);
+  }
+
+  .chip.active {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: rgba(79,124,255,.12);
+  }
+
+  /* ─── SAÉ ─── */
+  .sae-section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+
+  .sae-section-title::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  .sae-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .sae-card {
+    padding: 1.75rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: border-color .25s, transform .25s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sae-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--blue), var(--violet));
+    opacity: 0;
+    transition: opacity .25s;
+  }
+
+  .sae-card:hover {
+    border-color: rgba(79,124,255,.4);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  }
+
+  .sae-card:hover::before { opacity: 1; }
+
+  .sae-tag {
+    display: inline-block;
+    padding: .2rem .65rem;
+    border-radius: 6px;
+    font-size: .75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .sae-ue11 { background: rgba(79,124,255,.15);   color: var(--blue); }
+  .sae-ue12 { background: rgba(167,139,250,.15);  color: var(--violet); }
+  .sae-ue13 { background: rgba(52,211,153,.15);   color: var(--green); }
+  .sae-ue14 { background: rgba(245,158,11,.15);   color: var(--gold); }
+  .sae-ue21 { background: rgba(79,124,255,.15);   color: var(--blue); }
+  .sae-ue22 { background: rgba(167,139,250,.15);  color: var(--violet); }
+  .sae-ue23 { background: rgba(52,211,153,.15);   color: var(--green); }
+  .sae-ue24 { background: rgba(245,158,11,.15);   color: var(--gold); }
+  .sae-multi{ background: rgba(255,100,100,.12);  color: #ff8080; }
+
+  .sae-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: .5rem;
+    line-height: 1.3;
+  }
+
+  .sae-desc { font-size: .88rem; color: var(--muted); margin-bottom: 1rem; }
+
+  .sae-resources {
+    display: flex; flex-wrap: wrap; gap: .4rem;
+  }
+
+  .sae-res-chip {
+    padding: .15rem .55rem;
+    border-radius: 5px;
+    font-size: .75rem;
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  .sae-arrow {
+    position: absolute; bottom: 1.5rem; right: 1.5rem;
+    color: var(--muted);
+    font-size: 1.1rem;
+    transition: transform .2s, color .2s;
+  }
+
+  .sae-card:hover .sae-arrow { transform: translate(3px, -3px); color: var(--blue); }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 24px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: scale(.93) translateY(20px);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+    position: relative;
+  }
+
+  .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+
+  .modal-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background .2s, color .2s;
+  }
+
+  .modal-close:hover { background: rgba(255,255,255,.12); color: var(--text); }
+
+  .modal-semestre { font-size: .8rem; color: var(--muted); margin-bottom: .5rem; }
+  .modal-title    { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+  .modal-section  { margin-bottom: 1.5rem; }
+  .modal-section-label {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: .6rem;
+  }
+  .modal-text { font-size: .95rem; color: var(--muted); line-height: 1.7; }
+
+  /* ─── PARCOURS ─── */
+  .parcours-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .timeline-col-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+
+  .timeline-col-title::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  .timeline { position: relative; padding-left: 1.75rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px;
+    width: 2px;
+    height: calc(100% - 8px);
+    background: linear-gradient(180deg, var(--blue), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: border-color .2s, transform .2s;
+  }
+
+  .timeline-item:hover { border-color: rgba(79,124,255,.35); transform: translateX(4px); }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -1.75rem; top: 1.4rem;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 3px rgba(79,124,255,.25);
+  }
+
+  .timeline-date {
+    font-size: .78rem;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: .35rem;
+  }
+
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: .25rem;
+  }
+
+  .timeline-org { font-size: .88rem; color: var(--muted); }
+
+  /* ─── PPP ─── */
+  .ppp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ppp-card {
+    padding: 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: border-color .25s, transform .25s;
+  }
+
+  .ppp-card:hover { border-color: rgba(79,124,255,.35); transform: translateY(-4px); }
+
+  .ppp-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ppp-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: .75rem;
+  }
+
+  .ppp-card-text { font-size: .92rem; color: var(--muted); line-height: 1.7; }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    padding-bottom: 120px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 680px;
+  }
+
+  .contact-card {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color .25s, transform .25s, box-shadow .25s;
+  }
+
+  .contact-card:hover {
+    border-color: rgba(79,124,255,.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.3);
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .contact-label { font-size: .78rem; color: var(--muted); margin-bottom: .1rem; }
+  .contact-value { font-weight: 600; font-size: .95rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: .85rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 67px; left: 0; right: 0;
+      background: rgba(10,10,15,.97);
+      padding: 1.5rem 5vw;
+      border-bottom: 1px solid var(--border);
+      gap: 1.25rem;
+    }
+
+    .profil-grid,
+    .competences-grid,
+    .parcours-grid,
+    .ppp-grid,
+    .contact-grid { grid-template-columns: 1fr; }
+
+    .ressources-grid { grid-template-columns: 1fr; }
+
+    .stats-grid { grid-template-columns: repeat(3,1fr); }
+
+    section { padding: 80px 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress-bar"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">AEH</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#hero">Accueil</a></li>
+    <li><a href="#profil">Profil</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#ressources">Ressources</a></li>
+    <li><a href="#sae">SAÉ</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#ppp">PPP</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Disponible en apprentissage — IUT Évry</div>
+    <h1 class="hero-name">Anas<br><span>El Hiss</span></h1>
+    <p class="hero-subtitle">Étudiant BUT GMP · Parcours Simulation Numérique & Réalité Virtuelle<br>IUT Évry-Val-d'Essonne / CFA-EVE · Promotion 2025–2028</p>
+    <div class="hero-tags">
+      <span class="tag tag-blue">SolidWorks</span>
+      <span class="tag tag-violet">3DExperience</span>
+      <span class="tag tag-green">CAO / DAO</span>
+      <span class="tag tag-gold">CPD</span>
+      <span class="tag tag-blue">Apprentissage</span>
+      <span class="tag tag-violet">SNRV</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Me contacter
+      </a>
+      <a href="#parcours" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+        Mon parcours
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROFIL ══════════ -->
+<section id="profil">
+  <div class="reveal">
+    <p class="section-label">À propos</p>
+    <h2 class="section-title">Mon <span>Profil</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="profil-grid">
+    <div class="profil-text reveal">
+      <p>Étudiant en première année de BUT Génie Mécanique et Productique (parcours Simulation Numérique et Réalité Virtuelle), je suis en apprentissage chez <strong>Losange</strong> depuis octobre 2025 en tant qu'opérateur-régleur joaillerie.</p>
+      <p>Passionné par la conception assistée par ordinateur, la modélisation 3D et les méthodes de fabrication, je développe des compétences solides à travers des SAÉ concrètes couvrant les quatre blocs de compétences du BUT GMP.</p>
+      <p>Mon objectif : maîtriser les outils numériques de l'ingénieur (SolidWorks, 3DExperience) et m'orienter vers la simulation numérique et la réalité virtuelle appliquées à l'industrie.</p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Blocs de<br>compétences</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">9</div>
+          <div class="stat-label">SAÉ<br>réalisées</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Années<br>de formation</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--violet));display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-family:'Syne',sans-serif;font-weight:800;color:#fff;">A</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;">Anas El Hiss</div>
+            <div style="font-size:.85rem;color:var(--muted);">BUT GMP – SNRV</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.85rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.9rem;">
+            <span style="color:var(--blue)">📍</span>
+            <span style="color:var(--muted)">Maisons-Alfort (94)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.9rem;">
+            <span style="color:var(--green)">🎓</span>
+            <span style="color:var(--muted)">IUT Évry-Val-d'Essonne</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.9rem;">
+            <span style="color:var(--violet)">🏭</span>
+            <span style="color:var(--muted)">Apprenti chez Losange</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.9rem;">
+            <span style="color:var(--gold)">📅</span>
+            <span style="color:var(--muted)">Promotion 2025–2028</span>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600;">Logiciels</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+            <span class="tag tag-blue" style="font-size:.78rem">SolidWorks</span>
+            <span class="tag tag-violet" style="font-size:.78rem">3DExperience</span>
+            <span class="tag tag-green" style="font-size:.78rem">CAO/DAO</span>
+            <span class="tag tag-gold" style="font-size:.78rem">Catia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMPÉTENCES ══════════ -->
+<section id="competences">
+  <div class="reveal">
+    <p class="section-label">BUT GMP</p>
+    <h2 class="section-title">Blocs de <span>Compétences</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="competences-grid">
+
+    <div class="comp-card reveal" data-delay="0">
+      <div class="comp-header">
+        <div class="comp-icon comp-icon-blue">🔍</div>
+        <div>
+          <div class="comp-title">Spécifier</div>
+          <div class="comp-ue">UE11 · UE21</div>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Analyse fonctionnelle</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--blue),var(--violet))" data-w="75"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Expression du besoin</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--blue),var(--violet))" data-w="70"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Cahier des charges</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--blue),var(--violet))" data-w="65"></div></div>
+      </div>
+    </div>
+
+    <div class="comp-card reveal" data-delay="100">
+      <div class="comp-header">
+        <div class="comp-icon comp-icon-violet">⚙️</div>
+        <div>
+          <div class="comp-title">Développer</div>
+          <div class="comp-ue">UE12 · UE22</div>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>CAO / Modélisation 3D</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--violet),var(--blue))" data-w="80"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>SolidWorks / 3DExperience</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--violet),var(--blue))" data-w="75"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Simulation numérique</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--violet),var(--blue))" data-w="60"></div></div>
+      </div>
+    </div>
+
+    <div class="comp-card reveal" data-delay="150">
+      <div class="comp-header">
+        <div class="comp-icon comp-icon-green">🏭</div>
+        <div>
+          <div class="comp-title">Réaliser</div>
+          <div class="comp-ue">UE13 · UE23</div>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Fabrication / Usinage</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--green),var(--blue))" data-w="72"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Métrologie</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--green),var(--blue))" data-w="65"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Prototypage rapide</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--green),var(--blue))" data-w="68"></div></div>
+      </div>
+    </div>
+
+    <div class="comp-card reveal" data-delay="200">
+      <div class="comp-header">
+        <div class="comp-icon comp-icon-gold">📊</div>
+        <div>
+          <div class="comp-title">Piloter</div>
+          <div class="comp-ue">UE14 · UE24</div>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Gestion de production</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--gold),var(--green))" data-w="65"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Organisation industrielle</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--gold),var(--green))" data-w="60"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-info"><span>Lean / Amélioration continue</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="background:linear-gradient(90deg,var(--gold),var(--green))" data-w="55"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ RESSOURCES ══════════ -->
+<section id="ressources">
+  <div class="reveal">
+    <p class="section-label">Programme BUT GMP</p>
+    <h2 class="section-title">Ressources <span>Pédagogiques</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="ressources-grid">
+    <div class="reveal">
+      <div class="semestre-title">
+        <span class="semestre-badge badge-s1">S1</span> Semestre 1
+      </div>
+      <div class="chips-wrap">
+        <span class="chip">R1.01 Mécanique</span>
+        <span class="chip">R1.03 Science des matériaux</span>
+        <span class="chip">R1.04 Maths &amp; outils scientifiques</span>
+        <span class="chip">R1.05 Ingénierie de construction mécanique</span>
+        <span class="chip">R1.06 Outils pour l'ingénierie</span>
+        <span class="chip">R1.07 Production · Méthodes</span>
+        <span class="chip">R1.08 Métrologie</span>
+        <span class="chip">R1.10 Systèmes cyberphysiques</span>
+        <span class="chip">R1.13 Expression · Communication</span>
+        <span class="chip">R1.14 Langues</span>
+        <span class="chip">R1.15 PPP</span>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="semestre-title">
+        <span class="semestre-badge badge-s2">S2</span> Semestre 2
+      </div>
+      <div class="chips-wrap">
+        <span class="chip">R2.01 Mécanique</span>
+        <span class="chip">R2.02 Dimensionnement des structures</span>
+        <span class="chip">R2.03 Science des matériaux</span>
+        <span class="chip">R2.04 Maths</span>
+        <span class="chip">R2.05 Ingénierie construction mécanique</span>
+        <span class="chip">R2.06 Outils pour l'ingénierie</span>
+        <span class="chip">R2.07 Production · Méthodes</span>
+        <span class="chip">R2.08 Métrologie</span>
+        <span class="chip">R2.09 Organisation et pilotage industriel</span>
+        <span class="chip">R2.10 Systèmes cyberphysiques</span>
+        <span class="chip">R2.12 Informatique &amp; BDD</span>
+        <span class="chip">R2.13 Expression · Communication</span>
+        <span class="chip">R2.14 Langues</span>
+        <span class="chip">R2.15 PPP</span>
+        <span class="chip" style="color:var(--gold);border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.08)">POR2 Portfolio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SAÉ ══════════ -->
+<section id="sae">
+  <div class="reveal">
+    <p class="section-label">Situations d'Apprentissage et d'Évaluation</p>
+    <h2 class="section-title">Mes <span>SAÉ</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="sae-section-title reveal">Semestre 1</div>
+  <div class="sae-grid">
+
+    <div class="sae-card reveal" data-sae="1"
+      data-sem="Semestre 1"
+      data-ref="SAÉ 1.1"
+      data-ue="UE11 — Spécifier"
+      data-title="Analyse d'un produit grand public"
+      data-desc="Analyser un produit de grande consommation pour identifier ses fonctions, sa structure et les matériaux qui le composent. Rédiger un dossier d'analyse fonctionnelle et technique structuré."
+      data-res="R1.03, R1.04, R1.07, R1.10, R1.13, R1.14"
+      data-obj="Identifier et analyser les fonctions d'un produit existant. Mettre en œuvre les méthodes d'analyse de la valeur et de décomposition fonctionnelle."
+    >
+      <span class="sae-tag sae-ue11">UE11 — Spécifier</span>
+      <div class="sae-title">Analyse d'un produit grand public</div>
+      <div class="sae-desc">Analyse fonctionnelle et technique d'un produit de grande consommation.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R1.03</span>
+        <span class="sae-res-chip">R1.04</span>
+        <span class="sae-res-chip">R1.07</span>
+        <span class="sae-res-chip">R1.10</span>
+        <span class="sae-res-chip">R1.13</span>
+        <span class="sae-res-chip">R1.14</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+    <div class="sae-card reveal" data-sae="2"
+      data-sem="Semestre 1"
+      data-ref="SAÉ 1.2"
+      data-ue="UE12 — Développer"
+      data-title="Modification d'un système mécanique"
+      data-desc="Proposer et modéliser une modification sur un système mécanique existant en utilisant des outils de CAO. Justifier les choix techniques par des calculs et des simulations."
+      data-res="R1.01, R1.04, R1.05, R1.06"
+      data-obj="Maîtriser les outils CAO pour modifier un mécanisme existant. Justifier les choix de conception par le calcul mécanique."
+    >
+      <span class="sae-tag sae-ue12">UE12 — Développer</span>
+      <div class="sae-title">Modification d'un système mécanique</div>
+      <div class="sae-desc">Modélisation CAO et modification technique d'un mécanisme existant.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R1.01</span>
+        <span class="sae-res-chip">R1.04</span>
+        <span class="sae-res-chip">R1.05</span>
+        <span class="sae-res-chip">R1.06</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+    <div class="sae-card reveal" data-sae="3"
+      data-sem="Semestre 1"
+      data-ref="SAÉ 1.3"
+      data-ue="UE13 — Réaliser"
+      data-title="De la maquette numérique au prototype physique"
+      data-desc="Concevoir une pièce mécanique sur logiciel CAO, préparer le fichier de fabrication et réaliser le prototype physique par usinage ou fabrication additive. Contrôler la conformité des dimensions."
+      data-res="R1.05, R1.06, R1.07, R1.08"
+      data-obj="Passer du modèle numérique à la réalisation physique en maîtrisant l'ensemble de la chaîne numérique de fabrication."
+    >
+      <span class="sae-tag sae-ue13">UE13 — Réaliser</span>
+      <div class="sae-title">De la maquette numérique au prototype physique</div>
+      <div class="sae-desc">Chaîne numérique complète : CAO → fabrication → contrôle métrologique.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R1.05</span>
+        <span class="sae-res-chip">R1.06</span>
+        <span class="sae-res-chip">R1.07</span>
+        <span class="sae-res-chip">R1.08</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+    <div class="sae-card reveal" data-sae="4"
+      data-sem="Semestre 1"
+      data-ref="SAÉ 1.4"
+      data-ue="UE14 — Piloter"
+      data-title="Découverte des métiers"
+      data-desc="Explorer les différents métiers du Génie Mécanique et Productique à travers des rencontres professionnelles, des visites d'entreprises et des présentations de parcours. Construire son projet professionnel."
+      data-res="R1.13, R1.14, R1.15"
+      data-obj="Identifier les différents métiers accessibles après le BUT GMP et construire les premières bases de son projet professionnel personnalisé."
+    >
+      <span class="sae-tag sae-ue14">UE14 — Piloter</span>
+      <div class="sae-title">Découverte des métiers</div>
+      <div class="sae-desc">Exploration des débouchés professionnels et construction du projet pro.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R1.13</span>
+        <span class="sae-res-chip">R1.14</span>
+        <span class="sae-res-chip">R1.15</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+  </div>
+
+  <div class="sae-section-title reveal">Semestre 2</div>
+  <div class="sae-grid">
+
+    <div class="sae-card reveal" data-sae="5"
+      data-sem="Semestre 2"
+      data-ref="SAÉ 2.01"
+      data-ue="UE21 — Spécifier"
+      data-title="Spécification des processus d'élaboration d'une pièce"
+      data-desc="Analyser une pièce mécanique et définir les processus d'élaboration adaptés : choix des procédés, gamme de fabrication, spécifications dimensionnelles et géométriques."
+      data-res="R2.03, R2.06, R2.07, R2.13, POR2"
+      data-obj="Savoir spécifier un processus de fabrication complet en tenant compte des contraintes matériaux, géométriques et économiques."
+    >
+      <span class="sae-tag sae-ue21">UE21 — Spécifier</span>
+      <div class="sae-title">Spécification des processus d'élaboration d'une pièce</div>
+      <div class="sae-desc">Définition des gammes de fabrication et des spécifications techniques.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R2.03</span>
+        <span class="sae-res-chip">R2.06</span>
+        <span class="sae-res-chip">R2.07</span>
+        <span class="sae-res-chip">R2.13</span>
+        <span class="sae-res-chip">POR2</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+    <div class="sae-card reveal" data-sae="6"
+      data-sem="Semestre 2"
+      data-ref="SAÉ 2.02"
+      data-ue="UE22 — Développer"
+      data-title="Implantation d'un îlot robotisé de production"
+      data-desc="Concevoir et simuler l'implantation d'un îlot de production robotisé : choix des équipements, programmation du robot, optimisation du flux de production et analyse des risques."
+      data-res="R2.01, R2.05, R2.09, R2.10, POR2"
+      data-obj="Concevoir une cellule robotisée intégrée, programmer un robot industriel et évaluer la performance de la solution proposée."
+    >
+      <span class="sae-tag sae-ue22">UE22 — Développer</span>
+      <div class="sae-title">Implantation d'un îlot robotisé de production</div>
+      <div class="sae-desc">Conception et simulation d'une cellule robotisée industrielle.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R2.01</span>
+        <span class="sae-res-chip">R2.05</span>
+        <span class="sae-res-chip">R2.09</span>
+        <span class="sae-res-chip">R2.10</span>
+        <span class="sae-res-chip">POR2</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+    <div class="sae-card reveal" data-sae="7"
+      data-sem="Semestre 2"
+      data-ref="SAÉ 2.03"
+      data-ue="UE23 — Réaliser"
+      data-title="Fabrication d'une pièce unitaire"
+      data-desc="Réaliser une pièce unitaire de précision sur machine-outil en respectant les spécifications du dessin de définition. Contrôler la conformité géométrique et dimensionnelle par métrologie."
+      data-res="R2.05, R2.06, R2.07, R2.08, POR2"
+      data-obj="Maîtriser la réalisation complète d'une pièce unitaire, de la préparation à la vérification métrologique finale."
+    >
+      <span class="sae-tag sae-ue23">UE23 — Réaliser</span>
+      <div class="sae-title">Fabrication d'une pièce unitaire</div>
+      <div class="sae-desc">Usinage de précision et contrôle métrologique d'une pièce unitaire.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R2.05</span>
+        <span class="sae-res-chip">R2.06</span>
+        <span class="sae-res-chip">R2.07</span>
+        <span class="sae-res-chip">R2.08</span>
+        <span class="sae-res-chip">POR2</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+    <div class="sae-card reveal" data-sae="8"
+      data-sem="Semestre 2"
+      data-ref="SAÉ 2.04"
+      data-ue="UE24 — Piloter"
+      data-title="Piloter une production stabilisée"
+      data-desc="Gérer et optimiser une production industrielle stabilisée en appliquant les outils du lean manufacturing. Analyser les indicateurs de performance, réduire les gaspillages et proposer des améliorations."
+      data-res="R2.09, R2.12, R2.13, R2.14, POR2"
+      data-obj="Piloter une production en utilisant les outils de gestion industrielle (AMDEC, 5S, VSM) et les tableaux de bord de performance."
+    >
+      <span class="sae-tag sae-ue24">UE24 — Piloter</span>
+      <div class="sae-title">Piloter une production stabilisée</div>
+      <div class="sae-desc">Lean manufacturing, indicateurs de performance et amélioration continue.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R2.09</span>
+        <span class="sae-res-chip">R2.12</span>
+        <span class="sae-res-chip">R2.13</span>
+        <span class="sae-res-chip">R2.14</span>
+        <span class="sae-res-chip">POR2</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+    <div class="sae-card reveal" data-sae="9"
+      data-sem="Semestre 2"
+      data-ref="SAÉ 2.05"
+      data-ue="UE22 + UE23"
+      data-title="Conception d'une pièce de sécurité en traction"
+      data-desc="Concevoir et dimensionner une pièce mécanique soumise à des sollicitations en traction en tenant compte des exigences de sécurité. Réaliser la simulation numérique par éléments finis et valider la conception."
+      data-res="R2.01, R2.02, R2.05, POR2"
+      data-obj="Concevoir une pièce de sécurité en intégrant le calcul de résistance des matériaux, la simulation éléments finis et les normes de sécurité applicables."
+    >
+      <span class="sae-tag sae-multi">UE22 + UE23</span>
+      <div class="sae-title">Conception d'une pièce de sécurité en traction</div>
+      <div class="sae-desc">Dimensionnement, simulation éléments finis et validation d'une pièce critique.</div>
+      <div class="sae-resources">
+        <span class="sae-res-chip">R2.01</span>
+        <span class="sae-res-chip">R2.02</span>
+        <span class="sae-res-chip">R2.05</span>
+        <span class="sae-res-chip">POR2</span>
+      </div>
+      <span class="sae-arrow">↗</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ PARCOURS ══════════ -->
+<section id="parcours">
+  <div class="reveal">
+    <p class="section-label">Expériences &amp; Formation</p>
+    <h2 class="section-title">Mon <span>Parcours</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="parcours-grid">
+
+    <div class="reveal">
+      <div class="timeline-col-title">💼 Expériences</div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">Oct. 2025 — Aujourd'hui</div>
+          <div class="timeline-title">Apprenti Opérateur-Régleur Joaillerie</div>
+          <div class="timeline-org">Losange · Île-de-France</div>
+          <div style="margin-top:.75rem;font-size:.88rem;color:var(--muted);">
+            Réglage et conduite de machines-outils de précision dans le domaine de la joaillerie. Contrôle qualité, maintenance de premier niveau et optimisation des réglages.
+          </div>
+          <div style="margin-top:.75rem;">
+            <span class="tag tag-blue" style="font-size:.75rem">Usinage</span>
+            <span class="tag tag-green" style="font-size:.75rem;margin-left:.4rem">Précision</span>
+            <span class="tag tag-gold" style="font-size:.75rem;margin-left:.4rem">Apprentissage</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Avr. 2025 — Août 2025</div>
+          <div class="timeline-title">Animateur Sportif</div>
+          <div class="timeline-org">Ville de Maisons-Alfort · 94</div>
+          <div style="margin-top:.75rem;font-size:.88rem;color:var(--muted);">
+            Animation d'activités sportives auprès de différents publics. Développement des compétences relationnelles, pédagogiques et d'organisation.
+          </div>
+          <div style="margin-top:.75rem;">
+            <span class="tag tag-violet" style="font-size:.75rem">Animation</span>
+            <span class="tag tag-green" style="font-size:.75rem;margin-left:.4rem">Sport</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="timeline-col-title">🎓 Formation</div>
+      <div class="timeline">
+
+        <div class="timeline-item" style="border-color:rgba(79,124,255,.3)">
+          <div class="timeline-date">2025 — 2028</div>
+          <div class="timeline-title">BUT GMP · Parcours SNRV</div>
+          <div class="timeline-org">IUT Évry-Val-d'Essonne / CFA-EVE · Évry (91)</div>
+          <div style="margin-top:.75rem;font-size:.88rem;color:var(--muted);">
+            Génie Mécanique et Productique, parcours Simulation Numérique et Réalité Virtuelle. Formation en apprentissage (alternance).
+          </div>
+          <div style="margin-top:.75rem;">
+            <span class="tag tag-blue" style="font-size:.75rem">CAO/DAO</span>
+            <span class="tag tag-violet" style="font-size:.75rem;margin-left:.4rem">SolidWorks</span>
+            <span class="tag tag-green" style="font-size:.75rem;margin-left:.4rem">Alternance</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024 — 2025</div>
+          <div class="timeline-title">BUT 1 Informatique</div>
+          <div class="timeline-org">IUT Créteil-Vitry · Créteil (94)</div>
+          <div style="margin-top:.75rem;font-size:.88rem;color:var(--muted);">
+            Première année de BUT Informatique. Bases de la programmation, algorithmique, développement web et bases de données.
+          </div>
+          <div style="margin-top:.75rem;">
+            <span class="tag tag-gold" style="font-size:.75rem">Informatique</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2021 — 2024</div>
+          <div class="timeline-title">Baccalauréat STI2D</div>
+          <div class="timeline-org">Lycée Maximilien Perret · Alfortville (94)</div>
+          <div style="margin-top:.75rem;font-size:.88rem;color:var(--muted);">
+            Bac Sciences et Technologies de l'Industrie et du Développement Durable. Spécialité mécanique et systèmes industriels.
+          </div>
+          <div style="margin-top:.75rem;">
+            <span class="tag tag-violet" style="font-size:.75rem">STI2D</span>
+            <span class="tag tag-green" style="font-size:.75rem;margin-left:.4rem">Mécanique</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ PPP ══════════ -->
+<section id="ppp">
+  <div class="reveal">
+    <p class="section-label">Projet Personnel et Professionnel</p>
+    <h2 class="section-title">Mon <span>PPP</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="ppp-grid">
+
+    <div class="ppp-card reveal">
+      <div class="ppp-icon" style="background:rgba(79,124,255,.15)">🎯</div>
+      <div class="ppp-card-title">Objectif Professionnel</div>
+      <div class="ppp-card-text">
+        Devenir ingénieur en simulation numérique ou en conception mécanique avancée. Je vise à intégrer un secteur de pointe — aéronautique, automobile ou industrie de luxe — en exploitant les outils de simulation numérique et de réalité virtuelle pour optimiser les processus de conception et de fabrication.
+      </div>
+    </div>
+
+    <div class="ppp-card reveal" style="transition-delay:.1s">
+      <div class="ppp-icon" style="background:rgba(167,139,250,.15)">🔬</div>
+      <div class="ppp-card-title">Problématique</div>
+      <div class="ppp-card-text">
+        Comment la simulation numérique et la réalité virtuelle peuvent-elles transformer les méthodes de conception et de validation en industrie ? Cette question guide mon parcours SNRV et mes apprentissages, notamment dans les SAÉ portant sur la modélisation, le dimensionnement et la fabrication de pièces complexes.
+      </div>
+    </div>
+
+    <div class="ppp-card reveal" style="transition-delay:.15s">
+      <div class="ppp-icon" style="background:rgba(52,211,153,.15)">💻</div>
+      <div class="ppp-card-title">Identité Numérique</div>
+      <div class="ppp-card-text">
+        Ce portfolio numérique constitue ma vitrine professionnelle. Il recense mes SAÉ, mes compétences et mon parcours de façon transparente et structurée. Je construis progressivement une présence professionnelle en ligne cohérente avec mes ambitions dans l'ingénierie numérique.
+      </div>
+    </div>
+
+    <div class="ppp-card reveal" style="transition-delay:.2s">
+      <div class="ppp-icon" style="background:rgba(245,158,11,.15)">⚡</div>
+      <div class="ppp-card-title">Activités Extra-Professionnelles</div>
+      <div class="ppp-card-text">
+        Passionné de sport, j'ai exercé comme animateur sportif à Maisons-Alfort. La pratique sportive développe rigueur, esprit d'équipe et persévérance — des qualités directement transférables en milieu industriel. Je m'intéresse également aux nouvelles technologies et à la fabrication numérique.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact">
+  <div class="reveal">
+    <p class="section-label">Restons en contact</p>
+    <h2 class="section-title">Me <span>Contacter</span></h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted);margin-bottom:2.5rem;font-size:1.05rem;max-width:480px;">N'hésitez pas à me contacter pour toute opportunité, collaboration ou question concernant mon parcours.</p>
+  </div>
+  <div class="contact-grid reveal">
+
+    <a href="tel:0622584724" class="contact-card">
+      <div class="contact-icon" style="background:rgba(79,124,255,.12)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">Téléphone</div>
+        <div class="contact-value">06 22 58 47 24</div>
+      </div>
+    </a>
+
+    <a href="mailto:elhissanas@gmail.com" class="contact-card">
+      <div class="contact-icon" style="background:rgba(167,139,250,.12)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">elhissanas@gmail.com</div>
+      </div>
+    </a>
+
+    <a href="https://linkedin.com/in/anas-el-hiss" target="_blank" rel="noopener" class="contact-card">
+      <div class="contact-icon" style="background:rgba(52,211,153,.12)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">@anas-el-hiss</div>
+      </div>
+    </a>
+
+    <div class="contact-card" style="cursor:default;">
+      <div class="contact-icon" style="background:rgba(245,158,11,.12)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">Localisation</div>
+        <div class="contact-value">Maisons-Alfort (94)</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <p>© 2025 Anas El Hiss · BUT GMP SNRV · IUT Évry-Val-d'Essonne</p>
+  <p style="margin-top:.35rem;font-size:.8rem;opacity:.5;">Conçu avec soin pour présenter mon parcours académique et professionnel</p>
+</footer>
+
+<!-- ══════════ MODAL ══════════ -->
+<div class="modal-overlay" id="sae-modal" role="dialog" aria-modal="true">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" id="modal-close-btn" aria-label="Fermer">✕</button>
+    <div class="modal-semestre" id="m-sem"></div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+      <span id="m-tag" class="sae-tag"></span>
+      <span id="m-ref" style="font-size:.85rem;color:var(--muted)"></span>
+    </div>
+    <h3 class="modal-title" id="m-title"></h3>
+    <div class="modal-section">
+      <div class="modal-section-label">UE concernée</div>
+      <div class="modal-text" id="m-ue"></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-label">Description</div>
+      <div class="modal-text" id="m-desc"></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-label">Objectifs pédagogiques</div>
+      <div class="modal-text" id="m-obj"></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-label">Ressources mobilisées</div>
+      <div id="m-res" style="display:flex;flex-wrap:wrap;gap:.5rem;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ─── Progress bar ─── */
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const pct = doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  /* ─── Hamburger ─── */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  hamburger.addEventListener('keydown', e => { if(e.key==='Enter') navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* ─── Active nav ─── */
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  /* ─── Scroll reveal ─── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        /* animate skill bars */
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.w + '%';
+        });
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .12 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* ─── Chips toggle ─── */
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => chip.classList.toggle('active'));
+  });
+
+  /* ─── SAÉ Modal ─── */
+  const modal   = document.getElementById('sae-modal');
+  const mClose  = document.getElementById('modal-close-btn');
+
+  function openModal(card) {
+    const ue = card.dataset.ue || '';
+    const sem = card.dataset.sem || '';
+    const ref = card.dataset.ref || '';
+    const title = card.dataset.title || '';
+    const desc = card.dataset.desc || '';
+    const obj = card.dataset.obj || '';
+    const res = (card.dataset.res || '').split(',').map(s => s.trim()).filter(Boolean);
+
+    document.getElementById('m-sem').textContent = sem;
+    document.getElementById('m-ref').textContent = ref;
+    document.getElementById('m-title').textContent = title;
+    document.getElementById('m-ue').textContent = ue;
+    document.getElementById('m-desc').textContent = desc;
+    document.getElementById('m-obj').textContent = obj;
+
+    // Tag color
+    const tag = document.getElementById('m-tag');
+    tag.textContent = ue.split('—')[0].trim();
+    tag.className = 'sae-tag';
+    const ueKey = ue.replace(/[^0-9]/g, '').slice(0,2);
+    const classMap = {'11':'sae-ue11','12':'sae-ue12','13':'sae-ue13','14':'sae-ue14',
+                      '21':'sae-ue21','22':'sae-ue22','23':'sae-ue23','24':'sae-ue24'};
+    tag.classList.add(classMap[ueKey] || 'sae-multi');
+
+    // Resources
+    const resEl = document.getElementById('m-res');
+    resEl.innerHTML = '';
+    res.forEach(r => {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.style.cursor = 'default';
+      chip.textContent = r;
+      resEl.appendChild(chip);
+    });
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.sae-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') openModal(card); });
+    card.setAttribute('tabindex','0');
+    card.setAttribute('role','button');
+  });
+
+  mClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>
